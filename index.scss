@@ -9,10 +9,8 @@
 
 body {
   height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
-
+  display: grid;
+  place-items: center;
 }
 
 .container {
@@ -21,7 +19,6 @@ justify-content: center;
   grid-gap: 1rem;
   min-width: 20rem;
   max-width: 1000px;
-  margin: 0 auto;
 }
 .card {
   min-width: 21ch;
