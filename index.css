@@ -8,22 +8,48 @@
 
 body {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
   display: grid;
-  place-content: center;
+  justify-content: center;
+  grid-gap: 1rem;
+  min-width: 20rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .card {
-  max-width: 22ch;
+  min-width: 21ch;
+  max-width: 25ch;
   border-radius: 2px;
   padding: 1.5rem;
+  margin: 0.5rem;
   box-shadow: 3px 3px 8px 5px rgba(156, 156, 156, 0.37);
-  background: rgb(80, 80, 80);
-  background-size: 210%;
-  transition: background-position-y 0.35s;
+  transition: background-position-y 0.45s;
   overflow: hidden;
+  position: relative;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(360deg, rgba(0, 0, 0, 0.6108202443) 24%, rgba(0, 0, 0, 0) 100%);
+  opacity: 0;
+  transition: 0.5s;
 }
 .card:hover {
   background-position-y: center;
+}
+.card:hover::before {
+  opacity: 1;
 }
 .card:hover .card-content {
   transform: translateY(0);
@@ -38,11 +64,11 @@ body {
   line-height: 1.4rem;
   color: white;
   transform: translateY(calc(100% - 2rem));
-  transition: 0.4s;
+  transition: 0.3s ease-out, opacity 0.5s 0.05s;
 }
 .card .card-content :not(h1) {
   opacity: 0;
-  transition: transform 0.5s 0.05s, opacity 0.4s 0.05s;
+  transition: transform 0.5s 0.05s ease-out, opacity 0.5s 0.05s;
   transform: translateY(30%);
 }
 .card .card-content h1 {
@@ -61,4 +87,32 @@ body {
   font-size: 0.752rem;
   text-transform: uppercase;
   letter-spacing: 0.04rem;
+  cursor: pointer;
+}
+
+.forest {
+  background: url(https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=841&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-size: auto 115%;
+}
+
+.moon {
+  background: url(https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?auto=format&fit=crop&q=80&w=1402&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-size: auto 110%;
+}
+
+.volcano {
+  background: url(https://images.unsplash.com/photo-1619266465172-02a857c3556d?auto=format&fit=crop&q=80&w=1331&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-size: auto 110%;
+  background-position-x: 50%;
+}
+
+.beach {
+  background: url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1473&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-size: auto 115%;
+}
+
+@media (min-width: 600px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }/*# sourceMappingURL=index.css.map */
